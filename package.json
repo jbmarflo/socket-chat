@@ -1,19 +1,28 @@
 {
   "name": "socket-chat",
   "version": "1.0.0",
-  "description": "Proyecto de chat con node y socket.io",
+  "description": "Chat node.js socket",
   "main": "index.js",
-  "scripts": {
-  	"start": "nodemon server/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Joseph Marcilla",
-  "license": "MIT",
   "dependencies": {
     "express": "^4.14.1",
-    "socket.io": "^1.7.2"
+    "moment": "^2.17.1",
+    "socket.io": "^1.7.3"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
-  }
+  },
+  "scripts": {
+    "start": "nodemon server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbmarflo/socket-chat.git"
+  },
+  "author": "Joseph Marcilla",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jbmarflo/socket-chat/issues"
+  },
+  "homepage": "https://github.com/jbmarflo/socket-chat#readme"
 }
