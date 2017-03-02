@@ -1,8 +1,8 @@
 //forcerNew la coneccion de fuerce
 var socket = io.connect('http://192.168.1.8:6677',{'forceNew':true});
 //ngResource
-var app = angular.module("chat",[]);
-app
+
+angular.module("chat",[])
     .directive('schrollBottom', function () {
         return {
             scope: {
@@ -12,11 +12,29 @@ app
                 scope.$watchCollection('schrollBottom', function (newValue) {
                     if (newValue)
                     {
-                        $(element).scrollTop($(element)[0].scrollHeight);
+                         var div_msg = document.getElementById('messagesBox');
+                         var height = div_msg.scrollHeight;
+                         div_msg.scrollTop = height;
+                        // var height = element.scrollHeight;
+                        // alert(height);
+                        // $(element).scrollTop($(element)[0].scrollHeight);
                     }
                 });
             }
         }
+    })
+    .directive('ngEnter', function () {
+        return function (scope, element, attrs) {
+            element.bind("keydown keypress", function (event) {
+                if(event.which === 13) {
+                    scope.$apply(function (){
+                        scope.$eval(attrs.ngEnter);
+                    });
+
+                    event.preventDefault();
+                }
+            });
+        };
     })
 	.controller("boxChat",["$scope", "$http", function(scope, http){
 	var url_get = 'https://jsonplaceholder.typicode.com/comments';
@@ -81,19 +99,7 @@ app
 
 }]);
 
-app.directive('ngEnter', function () {
-    return function (scope, element, attrs) {
-        element.bind("keydown keypress", function (event) {
-            if(event.which === 13) {
-                scope.$apply(function (){
-                    scope.$eval(attrs.ngEnter);
-                });
 
-                event.preventDefault();
-            }
-        });
-    };
-});
 
 
 socket.on('messages',function(data){

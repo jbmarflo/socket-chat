@@ -217,7 +217,7 @@
 
 	</style>
 </head>
-<body ng-app="chat" >
+<body ng-app="chat">
 	<div class="chat_window" ng-controller="boxChat">
 		<div class="top_menu">
 			<div class="buttons">
@@ -237,7 +237,7 @@
 			<p class="text-center">-- Vacío --</p>
 			<br>
 		</div>
-		<ul class="messages" id="messagesBox" ng-show="messages.length > 0" ng-cloak schroll-bottom="messages">
+		<ul class="messages" id="messagesBox" ng-show="messages.length > 0" schroll-bottom="messages" >
 			<li ng-repeat="message in messages" class="message  appeared " ng-class="{'left': !messages.owner, 'right': messages.owner}">
 				<div class="avatar"></div>
 				<div class="text_wrapper">
